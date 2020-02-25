@@ -5,8 +5,8 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password]))
-      current_user
       log_in @user
+      current_user
     end
   end
 
