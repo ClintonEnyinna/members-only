@@ -5,14 +5,8 @@ class ApplicationController < ActionController::Base
       update_cookies(user)
     end
 
-    def update_cookies(user)
-      user.update_remember_token
-      cookies.permanent.signed[:user_id] = user.id
-      cookies.permanent[:remember_token] = user.token
-    end
-
-    def current_user?(user)
-        user == current_user
+    def current_user_is(user)
+      @current_user = user
     end
 
     def current_user
@@ -22,8 +16,16 @@ class ApplicationController < ActionController::Base
         user = User.find_by(id: user_id)
         if user && user.authenticated?(cookies[:remember_token])
           log_in user
-          @current_user = user
+          current_user_is(user)
         end
       end
+    end
+
+    private
+
+    def update_cookies(user)
+      user.update_remember_token
+      cookies.permanent.signed[:user_id] = user.id
+      cookies.permanent[:remember_token] = user.token
     end
 end

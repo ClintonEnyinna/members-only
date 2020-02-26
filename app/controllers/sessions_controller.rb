@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
-      current_user
+      current_user_is(@user)
       redirect_to login_path
     end
   end
