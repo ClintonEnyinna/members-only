@@ -2,7 +2,11 @@ class ApplicationController < ActionController::Base
     def log_in(user)
       session[:user_id] = user.id
 
-      update_remember_token(user)
+      update_cookies(user)
+    end
+
+    def update_cookies(user)
+      user.update_remember_token
       cookies.permanent.signed[:user_id] = user.id
       cookies.permanent[:remember_token] = user.token
     end

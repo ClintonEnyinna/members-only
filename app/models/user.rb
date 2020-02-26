@@ -7,9 +7,9 @@ class User < ApplicationRecord
       SecureRandom.urlsafe_base64
     end
 
-    def update_remember_token(user)
+    def update_remember_token
       self.token = User.new_token
-      user.update_attribute(:remember_token, Digest::SHA1.hexdigest(token))
+      update_attribute(:remember_token, Digest::SHA1.hexdigest(token))
     end
 
     def authenticated?(token)
