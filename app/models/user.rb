@@ -12,9 +12,14 @@ class User < ApplicationRecord
       update_attribute(:remember_token, Digest::SHA1.hexdigest(token))
     end
 
+    def forget
+      update_attribute(:remember_token, nil)
+    end
+
     def authenticated?(token)
       user_token = self.remember_token
-      return true if user_token == Digest::SHA1.hexdigest(token)
+      return false if self.remember_token.nil?
+      user_token == Digest::SHA1.hexdigest(token)
     end
 
     private

@@ -5,6 +5,18 @@ class ApplicationController < ActionController::Base
       update_cookies(user)
     end
 
+    def log_out
+      current_user.forget
+      current_user_is(nil)
+      session.delete(:user_id)
+      cookies.delete(:user_id)
+      cookies.delete(:remember_token)
+    end
+
+    def logged_in?
+      current_user
+    end
+
     def current_user_is(user)
       @current_user = user
     end
