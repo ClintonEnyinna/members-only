@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :check_user, only: [:new, :create]
+  before_action :check_user, only: %i[new create]
 
   def index
     @posts = Post.all
@@ -17,12 +17,10 @@ class PostsController < ApplicationController
   private
 
   def check_user
-    unless logged_in?
-      redirect_to root_path
-    end
+    redirect_to root_path unless logged_in?
   end
 
   def post_params
     params.require(:post).permit(:title, :body)
-  end 
+  end
 end
