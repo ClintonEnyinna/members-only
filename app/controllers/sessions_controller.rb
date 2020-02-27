@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
       current_user_is(@user)
       redirect_to root_path
     else
-      #redirect_to root_path
+      redirect_to root_path
     end
   end
   
