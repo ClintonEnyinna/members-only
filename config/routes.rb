@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/new'
-  get 'users/create'
   root "posts#index"
 
   get "/login", to: "sessions#new"
