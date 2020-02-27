@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       current_user_is(@user)
       redirect_to root_path
     else
-      render "new"
+      render 'new'
     end
   end
 
