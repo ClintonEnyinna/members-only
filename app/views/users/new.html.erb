@@ -1,17 +1,22 @@
-<h1>Sign Up</h1>
-
-<%= form_for(@user) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  </br>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  </br>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  </br>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  </br>
-  <%= f.submit %>
-<% end %> 
+<div class="container" style="max-width: 700px">
+  <h4 class="text-center mt-5">Sign up<h4>
+    <%= form_for(@user) do |f| %>
+      <div class="form-group">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.text_field :password, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= f.label :password_confirmation %>
+        <%= f.text_field :password_confirmation, class: 'form-control' %>
+      </div>
+      <%= f.submit 'Sign up', class: 'btn btn-primary'  %>
+    <% end %>
+</div>
