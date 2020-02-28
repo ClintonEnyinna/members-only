@@ -1,6 +1,7 @@
 <div class="container" style="max-width: 700px">
   <h4 class="text-center mt-5"> Create new post <h4>
     <%= form_for(@post) do |f| %>
+      <%= render 'error_messages' %>
       <div class="form-group">
         <%= f.label :title %>
         <%= f.text_field :title, class: 'form-control' %>
