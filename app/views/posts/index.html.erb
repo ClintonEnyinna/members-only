@@ -1,12 +1,15 @@
 <h1>Posts</h1>
 
 <% @posts.each do |post| %>
-
-  <h4><%= post.title %></h4>
-  <p>
-    <%= post.body %>
-  </p>
-  <% if session[:user_id] %>
-    <span><%= post.user.name %><span>
-  <% end %>
+  <div class="card mb-3 text-white bg-dark">
+    <div class="card-header">
+      <%= post.title %>
+    </div>
+    <div class="card-body">
+      <%= post.body %>
+      <% if session[:user_id] %>
+        <p class="card-text text-right"><small class="text-white">&mdash; <%= post.user.name %></small></p>
+      <% end %>
+    </div>
+  </div>
 <% end %> 
