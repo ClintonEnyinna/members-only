@@ -1,2 +1,12 @@
 <h1>Posts</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+
+<% @posts.each do |post| %>
+
+  <h4><%= post.title %></h4>
+  <p>
+    <%= post.body %>
+  </p>
+  <% if session[:user_id] %>
+    <span><%= post.user.name %><span>
+  <% end %>
+<% end %> 
