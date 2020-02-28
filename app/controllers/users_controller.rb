@@ -7,8 +7,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
+      flash[:success] = "Welcome to the club #{@user.name}!"
       redirect_to root_path
     else
+      flash.now[:danger] = "Password doesn't match!"
       render 'new'
     end
   end
