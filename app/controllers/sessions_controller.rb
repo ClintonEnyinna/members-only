@@ -6,16 +6,16 @@ class SessionsController < ApplicationController
     if @user&.authenticate(params[:session][:password])
       log_in @user
       current_user_is(@user)
-      flash[:success] = "Successfully logged in!"
+      flash[:success] = 'Successfully logged in!'
       redirect_to root_path
     else
-      flash.now[:danger] = "Incorrect email/password!"
+      flash.now[:danger] = 'Incorrect email/password!'
       render 'new'
     end
   end
 
   def destroy
-    flash[:success] = "See you later!"
+    flash[:success] = 'See you later!'
     log_out if current_user
     redirect_to root_path
   end
